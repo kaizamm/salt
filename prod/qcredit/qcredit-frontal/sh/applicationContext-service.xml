@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:cxf="http://cxf.apache.org/core" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	                    http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+	default-lazy-init="true">
+	<description>Apache CXF Web Service Client端配置</description>
+
+	<context:property-placeholder
+		ignore-resource-not-found="true" location="classpath*:/application.properties" />
+    
+	<jaxws:client id="iaccoutService"
+		serviceClass="com.qf.qcredit.bkend.service.IAccoutService" address="${bkend.service.url}/accoutService" />
+
+	<!-- set方式注入 -->
+	<bean id="approveService" class="com.qf.qcredit.frontal.approveManagement.service.ApproveService">
+		<property name="iapproveService" ref="iapproveService" />
+	</bean>
+
+	<jaxws:client id="iapproveService"
+		serviceClass="com.qf.qcredit.bkend.service.IApproveService" address="${bkend.service.url}/approveService" />
+	<!-- set方式注入 -->
+	<bean id="carApproveService" class="com.qf.qcredit.frontal.approveManagement.service.CarApproveService">
+		<property name="icarApproveService" ref="icarApproveService" />
+	</bean>
+
+	<jaxws:client id="icarApproveService"
+		serviceClass="com.qf.qcredit.bkend.service.ICarApproveService" address="${bkend.service.url}/carApproveService" />
+
+	<!-- set方式注入appMainService -->
+	<bean id="appMainService" class="com.qf.qcredit.frontal.approveManagement.service.AppMainService">
+		<property name="iappMainService" ref="iappMainService" />
+	</bean>
+
+	<jaxws:client id="iappMainService"
+		serviceClass="com.qf.qcredit.bkend.service.IAppMainService" address="${bkend.service.url}/appMainService" />
+
+	<bean id="entryService" class="com.qf.qcredit.frontal.entry.service.EntryService">
+		<property name="iEntryService" ref="iEntryService" />
+	</bean>
+	
+	<jaxws:client id="iEntryService" 
+		serviceClass="com.qf.qcredit.bkend.service.IEntryService" address="${bkend.service.url}/entryService" />
+	
+	<!-- 取缓存信息服务 -->	
+	<jaxws:client id="iCacheContextService"
+		serviceClass="com.qf.qcredit.bkend.service.ICacheContextService" address="${bkend.service.url}/cacheContextService" />
+	
+	<!-- set方式注入appNrListService -->
+	<bean id="appNrListService" class="com.qf.qcredit.frontal.approveManagement.service.AppNrListService">
+		<property name="iappNrListService" ref="iappNrListService" />
+	</bean>	
+	<!-- 补充资料 -->	
+	<jaxws:client id="iappNrListService"
+		serviceClass="com.qf.qcredit.bkend.service.IAppNrListService" address="${bkend.service.url}/appNrListService" />
+		
+	<!-- set方式注入blackListService -->
+	<bean id="blackListService" class="com.qf.qcredit.frontal.approveManagement.service.BlackListService">
+		<property name="iblackListService" ref="iblackListService" />
+	</bean>	
+	<!-- 补充资料 -->	
+	<jaxws:client id="iblackListService"
+		serviceClass="com.qf.qcredit.bkend.service.IBlackListService" address="${bkend.service.url}/blackListService" />
+
+	<!-- 登录控服务-->
+	<bean id="loginService" class="com.qf.qcredit.frontal.systemManagement.service.LoginService">
+		<property name="iloginService" ref="iloginService" />
+	</bean>	
+	<!-- 登录控服务 -->	
+	<jaxws:client id="iloginService"
+		serviceClass="com.qf.qcredit.bkend.service.ILoginService" address="${bkend.service.url}/loginService" />
+	
+	<!-- 通用审批流 webservice set方式注入 -->
+	<bean id="commonWorkflowService" class="com.qf.qcredit.frontal.approveManagement.service.CommonWorkflowService">
+		<property name="icommonWorkflowService" ref="icommonWorkflowService" />
+	</bean>
+
+	<jaxws:client id="icommonWorkflowService"
+		serviceClass="com.qf.qcredit.bkend.service.ICommonWorkflowService" address="${bkend.service.url}/commonWorkflowService" />
+	
+	<bean id="echeckInfoService" class="com.qf.qcredit.frontal.approveManagement.service.EcheckInfoService">
+		<property name="iecheckInfoService" ref="iecheckInfoService" />
+	</bean>
+
+	<jaxws:client id="iecheckInfoService"
+		serviceClass="com.qf.qcredit.bkend.service.IEcheckInfoService" address="${bkend.service.url}/echeckInfoService" />
+	
+	<!-- pboc页面查询	-->
+	<bean id="fileManageService" class="com.qf.qcredit.frontal.approveManagement.service.FileManageService">
+		<property name="ifileManageService" ref="ifileManageService" />
+	</bean>
+	
+	<jaxws:client id="ifileManageService"
+		serviceClass="com.qf.qcredit.bkend.service.IFileManageService" address="${bkend.service.url}/fileManageService" />
+</beans>

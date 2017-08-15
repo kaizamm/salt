@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                       http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+                       http://www.springframework.org/schema/task
+						http://www.springframework.org/schema/task/spring-task-3.1.xsd ">
+
+	<bean id="logJdkvm" class="com.qf.modules.utils.LogJdkvm"/>
+
+	<!-- 启动定时任务 -->
+    <task:annotation-driven/>
+       
+     <task:scheduled-tasks>
+  		<task:scheduled ref="logJdkvm" method="logJdkvm" cron="*/10 * * * * ?" />
+ 	</task:scheduled-tasks>
+    
+</beans>

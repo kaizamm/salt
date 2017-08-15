@@ -1,0 +1,3 @@
+#cat dev/myapp/files/myconf.txt
+[BASE] /srv/salt/dev
+My hostname is {{grains['fqdn']}}

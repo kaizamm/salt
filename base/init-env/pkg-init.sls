@@ -1,0 +1,21 @@
+pkg-init:
+  pkg.installed:
+    - names:
+      - vim-common
+      - vim-enhanced
+      - make
+      - gcc
+      - gcc-c++
+      - autoconf
+      - openssl
+      - openssl-devel
+      - pcre
+      - pcre-devel
+      - lsof
+      - tree
+      - man
+      - lrzsz
+      - unzip
+      - zip
+      - wget
+      - net-tools
